@@ -61,7 +61,7 @@ public:
 
     INLINE float length(vec4 v) { return sqrtf(dot(v, v)); }
 
-    INLINE float length_sqaured(vec4 v) { return dot(v, v); }
+    INLINE float length_squared(vec4 v) { return dot(v, v); }
 
     INLINE vec4 norm(vec4 v) { return v * (1.0f / length(v)); }
     union {
