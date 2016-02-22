@@ -51,7 +51,10 @@ public:
     INLINE vec4 min(vec4 &v, float f) { return _mm_min_ps(v.m, _mm_set1_ps(f)); }
 
     INLINE vec4 min(vec4 &a, vec4 &b) { return _mm_min_ps(a.m, b.m); }
-    INLINE vec4 clamp(vec4 t, vec4 a, vec4 b) { return min(b, max(t, a)); }
+    INLINE vec4 clamp(vec4 t, vec4 a, vec4 b) {
+        vec4 min_ta = max(t, a);
+        return min(b, min_ta); 
+    }
 
     INLINE float sum(vec4 v) { return v.x + v.y + v.z + v.w; }
 
