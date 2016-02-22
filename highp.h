@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include <math.h>
-#include <xmmintrin.h>
+#include <x86intrin.h>
 
 #define INLINE __always_inline
 
@@ -43,6 +43,9 @@ public:
     INLINE vec4 operator<=(vec4 b) { return _mm_cmple_ps(m, b.m); }
     INLINE vec4 operator>=(vec4 b) { return _mm_cmpge_ps(m, b.m); }
 
+    INLINE float operator[] (size_t i) const { return m.m128_f32[i]; };
+    INLINE float& operator[] (size_t i) { return m.m128_f32[i]; };
+
 
     INLINE vec4 max(vec4 &v, float f) { return _mm_max_ps(v.m, _mm_set1_ps(f)); }
 
@@ -53,7 +56,7 @@ public:
     INLINE vec4 min(vec4 &a, vec4 &b) { return _mm_min_ps(a.m, b.m); }
     INLINE vec4 clamp(vec4 t, vec4 a, vec4 b) {
         vec4 min_ta = max(t, a);
-        return min(b, min_ta); 
+        return min(b, min_ta);
     }
 
     INLINE float sum(vec4 v) { return v.x + v.y + v.z + v.w; }
