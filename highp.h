@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include <math.h>
-#include <x86intrin.h>
+#include <immintrin.h>
 
 #define INLINE __always_inline
 
@@ -42,10 +42,6 @@ public:
     INLINE vec4 operator> (vec4 b) { return _mm_cmpgt_ps(m, b.m); }
     INLINE vec4 operator<=(vec4 b) { return _mm_cmple_ps(m, b.m); }
     INLINE vec4 operator>=(vec4 b) { return _mm_cmpge_ps(m, b.m); }
-
-    INLINE float operator[] (size_t i) const { return m.m128_f32[i]; };
-    INLINE float& operator[] (size_t i) { return m.m128_f32[i]; };
-
 
     INLINE vec4 max(vec4 &v, float f) { return _mm_max_ps(v.m, _mm_set1_ps(f)); }
 
