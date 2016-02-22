@@ -64,6 +64,8 @@ public:
     INLINE float length_squared(vec4 v) { return dot(v, v); }
 
     INLINE vec4 norm(vec4 v) { return v * (1.0f / length(v)); }
+    INLINE vec4 lerp(vec4 a, vec4 b, float t) { return a + (b-a)*t; }
+
     union {
 
         struct {
